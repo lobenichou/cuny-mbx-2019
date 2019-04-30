@@ -99,13 +99,11 @@ map.on('load', () => {
 
   scroller
     .setup({
-      step: '.step',
-      debug: true
+      step: '.step'
     })
     .onStepEnter(response => {
       const currentStep = response.element.dataset.step;
       const currentDirection = response.direction;
-
       const directionIs = (step, direction) => {
         return currentStep === step && currentDirection === direction;
       };
@@ -141,7 +139,6 @@ map.on('load', () => {
       }
     });
 });
-
 
 
 // setup resize event
