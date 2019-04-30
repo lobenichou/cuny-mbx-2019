@@ -1,7 +1,9 @@
 const scroller = scrollama();
 
+// access token
 mapboxgl.accessToken = 'pk.eyJ1IjoibG9iZW5pY2hvdSIsImEiOiJjajdrb2czcDQwcHR5MnFycmhuZmo4eWwyIn0.nUf9dWGNVRnMApuhQ44VSw';
 
+// map config
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/lobenichou/cjv2qx627b01b1ftlxxj9ukyi',
@@ -9,13 +11,16 @@ const map = new mapboxgl.Map({
   zoom: 10
 });
 
+// function to reset map to original position
 const mapReset = () => {
   map.easeTo({
     center: [-73.908533, 40.752069],
-    zoom: 10
+    zoom: 10,
+    pitch: 0
   });
 };
 
+// wait for map to finish load before adding interactions
 map.on('load', () => {
   // Create a popup, but don't add it to the map yet.
   const popup = new mapboxgl.Popup({
@@ -23,6 +28,7 @@ map.on('load', () => {
     closeOnClick: false
   });
 
+  // A map event -- on mouseenter
   map.on('mouseenter', 'income-per-station-cir', (e) => {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
@@ -68,6 +74,7 @@ map.on('load', () => {
     popup.remove();
   });
 
+  // list of layer ids - used to create our buttons and toggle visiblity
   const toggleableLayerIds = ['income-per-station-hex', 'income-per-station-cir', 'subway-lines'];
 
   toggleableLayerIds.forEach((toggleableLayerId) => {
@@ -96,11 +103,13 @@ map.on('load', () => {
     layers.appendChild(link);
   });
 
-
+  // our scrollama object
   scroller
     .setup({
-      step: '.step'
+      step: '.step',
+      // debug: true
     })
+    // decide what to do when our step enters the viewport
     .onStepEnter(response => {
       const currentStep = response.element.dataset.step;
       const currentDirection = response.direction;
