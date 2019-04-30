@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Display a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+  <script src="https://d3js.org/d3-format.v1.min.js"></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Heebo', sans-serif;
+    }
+
+
+    #scroll {
+      color: white;
+      width: 33%;
+      background-color: #343332;
+      padding: 25px;
+    }
+
+    #map {
+      width: 67%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
+
+    .step {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #menu a {
+      font-size: 15px;
+      color: #404040;
+      background-color: #2d2d2d;
+      margin: 10px;
+      padding: 0;
+      padding: 10px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    #menu a:hover {
+      background-color: #f8f8f8;
+      color: #404040;
+    }
+
+    #menu a.active {
+      background-color: #00c3e6;
+      color: #ffffff;
+    }
+
+    #menu a.active:hover {
+      background: #036f82;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scroll">
+    <h2>Median Income Per Station in NY</h2>
+    <div class="step" data-step="a">
+      <p>Kindle Single CTR Walter Cronkite died for your sins TBD crowdfunding YouTube election-night hologram analytics Julian Assange retweet twitterati, newsonomics Nook learnings Wikipedia the power of the press belongs to the person who owns
+        one Bill Keller linkbait should isn't a business model inverted pyramid, writing we will make them pay syndicated Voice of San Diego incent Walter Cronkite died for your sins Nick Denton the medium is the message scoop. we need a Nate Silver
+        Jurgen Habermas cancel my subscription Julian Assange hackgate engagement AOL filters scoop This Week in Review, paywall attracting young readers The Printing Press as an Agent of Change Walter Cronkite died for your sins mthomps nut graf
+        digital circulation strategy.</p>
+    </div>
+    <div class="step" data-step="b">
+      <p>Kindle Single CTR Walter Cronkite died for your sins TBD crowdfunding YouTube election-night hologram analytics Julian Assange retweet twitterati, newsonomics Nook learnings Wikipedia the power of the press belongs to the person who owns
+        one Bill Keller linkbait should isn't a business model inverted pyramid, writing we will make them pay syndicated Voice of San Diego incent Walter Cronkite died for your sins Nick Denton the medium is the message scoop. we need a Nate Silver
+        Jurgen Habermas cancel my subscription Julian Assange hackgate engagement AOL filters scoop This Week in Review, paywall attracting young readers The Printing Press as an Agent of Change Walter Cronkite died for your sins mthomps nut graf
+        digital circulation strategy.</p>
+    </div>
+    <div class="step" data-step="c">
+      <p>Kindle Single CTR Walter Cronkite died for your sins TBD crowdfunding YouTube election-night hologram analytics Julian Assange retweet twitterati, newsonomics Nook learnings Wikipedia the power of the press belongs to the person who owns
+        one Bill Keller linkbait should isn't a business model inverted pyramid, writing we will make them pay syndicated Voice of San Diego incent Walter Cronkite died for your sins Nick Denton the medium is the message scoop. we need a Nate Silver
+        Jurgen Habermas cancel my subscription Julian Assange hackgate engagement AOL filters scoop This Week in Review, paywall attracting young readers The Printing Press as an Agent of Change Walter Cronkite died for your sins mthomps nut graf
+        digital circulation strategy.</p>
+    </div>
+    <div class="step" data-step="d">
+      <p>Kindle Single CTR Walter Cronkite died for your sins TBD crowdfunding YouTube election-night hologram analytics Julian Assange retweet twitterati, newsonomics Nook learnings Wikipedia the power of the press belongs to the person who owns
+        one Bill Keller linkbait should isn't a business model inverted pyramid, writing we will make them pay syndicated Voice of San Diego incent Walter Cronkite died for your sins Nick Denton the medium is the message scoop. we need a Nate Silver
+        Jurgen Habermas cancel my subscription Julian Assange hackgate engagement AOL filters scoop This Week in Review, paywall attracting young readers The Printing Press as an Agent of Change Walter Cronkite died for your sins mthomps nut graf
+        digital circulation strategy.</p>
+    </div>
+    <div id="menu" class="step" data-step="e">
+    </div>
+  </div>
+  <div id='map'></div>
+  <script src='main.js'></script>
+</body>
+
+</html>
