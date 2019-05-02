@@ -1,7 +1,12 @@
 const scroller = scrollama();
-// token is restricted to the https://lobenichou.github.io/cuny-mbx-2019/ url
-// Replace with your own token
+// token is restricted to the https://lobenichou.github.io/cuny-mbx-2019/ url.
+// Replace with your own token.
 const accessToken = 'pk.eyJ1IjoibG9iZW5pY2hvdSIsImEiOiJjanY1d2t3bWEwY3lmNGVxbmJscHF2em93In0.FOQFZHTiTTTkEZHliSjh9Q';
+
+// Map style - update if you create your own.This one is public and should work with your token
+const mapStyle = 'mapbox://styles/lobenichou/cjv2qx627b01b1ftlxxj9ukyi';
+
+// If you upload the data into a new style, you will have to update the name of the layers. Make sure they match the id of your layers in Studio (or here if you use addLayer()). You will also have to re-style the data. Check the data folder for the json files for each layer. It contains the expressions used to the properties. You can copy and paste  it into Studio by clicking on "</>" or use it in Mapbox GL JS.
 const circleLayer = 'income-per-station-cir';
 const hexLayer = 'income-per-station-hex';
 const subwayLineLayer = 'subway-lines';
@@ -12,7 +17,7 @@ mapboxgl.accessToken = accessToken;
 // map config
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/lobenichou/cjv2qx627b01b1ftlxxj9ukyi',
+  style: mapStyle,
   center: [-73.908533, 40.752069],
   zoom: 10.5
 });

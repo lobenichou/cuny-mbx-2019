@@ -1,0 +1,44 @@
+/* radius */
+[
+  "interpolate",
+  ["linear"],
+  ["zoom"],
+  11,
+  2,
+  12,
+  10
+]
+
+/* fill-color */
+
+[
+  "case",
+  ["has", "incomeMed"],
+  [
+    "interpolate",
+    ["linear"],
+    ["get", "incomeMed"],
+    10746,
+    "hsl(53, 98%, 56%)",
+    183500,
+    "#00c3e6"
+  ],
+  "hsl(0, 0%, 54%)"
+]
+
+/* stroke-color */
+
+[
+  "case",
+  ["has", "incomeMed"],
+  [
+    "interpolate",
+    ["linear"],
+    ["get", "incomeMed"],
+    10746,
+    "hsl(53, 98%, 56%)",
+    183500,
+    "hsl(189, 100%, 45%)"
+  ],
+  "hsl(0, 0%, 54%)"
+]

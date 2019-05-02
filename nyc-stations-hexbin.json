@@ -1,0 +1,27 @@
+/* height */
+[
+  "interpolate",
+  ["linear"],
+  ["get", "incomeMed"],
+  10746,
+  10,
+  183500,
+  1800
+]
+
+/* color */
+
+[
+  "case",
+  ["has", "incomeMed"],
+  [
+    "interpolate",
+    ["linear"],
+    ["get", "incomeMed"],
+    10746,
+    "hsl(53, 98%, 56%)",
+    183500,
+    "hsl(189, 100%, 45%)"
+  ],
+  "hsl(0, 0%, 54%)"
+]

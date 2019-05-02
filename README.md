@@ -2,6 +2,7 @@
 
 ![](https://paper-attachments.dropbox.com/s_23962B8C37497393D9B6FF3F8168412ECF2402DD7564ED836A55E1EC6E22EE20_1551852373613_Screen+Shot+2019-02-28+at+8.32.31+AM.png)
 
+***Note: More instructions are available in the code***
 
 ⚙️ **Resources for this lesson:**
 
