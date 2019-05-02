@@ -1,8 +1,6 @@
 # Lesson: Interactive Mapping With Mapbox GL JS
 
-
 ![](https://paper-attachments.dropbox.com/s_23962B8C37497393D9B6FF3F8168412ECF2402DD7564ED836A55E1EC6E22EE20_1551852373613_Screen+Shot+2019-02-28+at+8.32.31+AM.png)
-
 
 
 ⚙️ **Resources for this lesson:**
@@ -13,7 +11,16 @@
 
 🔗 [Scrollama](https://github.com/russellgoldenberg/scrollama) library
 
-***Note: The data was prepared for you to use. This lesson doesn’t go into data clean-up and geo-processing.***
+🔗 [NY Census Tract Demographic Data](https://www.kaggle.com/muonneutrino/new-york-city-census-data/version/2#nyc_census_tracts.csv)
+
+🔗 [NY Census Tract Demographic Data](https://www.kaggle.com/muonneutrino/new-york-city-census-data/version/2#nyc_census_tracts.csv)
+
+🔗 [NY Subway Lines](https://data.cityofnewyork.us/Transportation/Subway-Lines/3qz8-muuu)
+
+🔗 [NY Subway Stations](https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49)
+
+
+***Note: The data was prepared for you to use. This lesson doesn’t go into data clean-up and geo-processing. DO NOT USE THIS DATA FOR PUBLISHING. It needs to be fact-checked and some of it may be missing or invalid. This data solely is used to demonstrate data-driven styling.***
 
 ⚙️ **Resources to further your knowledge:**
 
