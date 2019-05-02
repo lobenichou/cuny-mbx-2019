@@ -14,7 +14,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/lobenichou/cjv2qx627b01b1ftlxxj9ukyi',
   center: [-73.908533, 40.752069],
-  zoom: 10
+  zoom: 10.5
 });
 
 
@@ -144,7 +144,7 @@ map.on('load', () => {
       } else if (directionIs('d', 'down') || directionIs('d', 'up')) {
         map.easeTo({
           center: [-73.977402, 40.746748],
-          zoom: 13,
+          zoom: 11,
           pitch: 45,
           bearing: 30
         })
