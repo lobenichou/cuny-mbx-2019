@@ -1,7 +1,13 @@
 const scroller = scrollama();
+// token is restricted to the https://lobenichou.github.io/cuny-mbx-2019/ url
+// Replace with your own token
+const accessToken = 'pk.eyJ1IjoibG9iZW5pY2hvdSIsImEiOiJjanY1d2t3bWEwY3lmNGVxbmJscHF2em93In0.FOQFZHTiTTTkEZHliSjh9Q';
+const circleLayer = 'income-per-station-cir';
+const hexLayer = 'income-per-station-hex';
+const subwayLineLayer = 'subway-lines';
 
 // access token
-mapboxgl.accessToken = 'pk.eyJ1IjoibG9iZW5pY2hvdSIsImEiOiJjajdrb2czcDQwcHR5MnFycmhuZmo4eWwyIn0.nUf9dWGNVRnMApuhQ44VSw';
+mapboxgl.accessToken = accessToken;
 
 // map config
 const map = new mapboxgl.Map({
@@ -10,6 +16,7 @@ const map = new mapboxgl.Map({
   center: [-73.908533, 40.752069],
   zoom: 10
 });
+
 
 // function to reset map to original position
 const mapReset = () => {
@@ -29,12 +36,13 @@ map.on('load', () => {
   });
 
   // A map event -- on mouseenter
-  map.on('mouseenter', 'income-per-station-cir', (e) => {
+  map.on('mouseenter', circleLayer, (e) => {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
-
-    const coordinates = e.features[0].geometry.coordinates.slice();
-    const description = d3.format("($,.2f")(e.features[0].properties.incomeMed);
+    console.log(e)
+    // const coordinates = e.features[0].geometry.coordinates.slice();
+    // const description = d3.format("($,.2f")(e.features[0].properties.incomeMed);
+    const description = e.features[0].properties.incomeMed;
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -45,17 +53,17 @@ map.on('load', () => {
 
     // Populate the popup and set its coordinates
     // based on the feature found.
-    popup.setLngLat(coordinates)
+    popup.setLngLat(e.lngLat)
       .setHTML(description)
       .addTo(map);
   });
 
-  map.on('mouseleave', 'income-per-station-cir', () => {
+  map.on('mouseleave', circleLayer, () => {
     map.getCanvas().style.cursor = '';
     popup.remove();
   });
 
-  map.on('mouseenter', 'income-per-station-hex', (e) => {
+  map.on('mouseenter', hexLayer, (e) => {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
 
@@ -69,13 +77,13 @@ map.on('load', () => {
       .addTo(map);
   });
 
-  map.on('mouseleave', 'income-per-station-hex', () => {
+  map.on('mouseleave', hexLayer, () => {
     map.getCanvas().style.cursor = '';
     popup.remove();
   });
 
   // list of layer ids - used to create our buttons and toggle visiblity
-  const toggleableLayerIds = ['income-per-station-hex', 'income-per-station-cir', 'subway-lines'];
+  const toggleableLayerIds = [hexLayer, circleLayer, subwayLineLayer];
 
   toggleableLayerIds.forEach((toggleableLayerId) => {
     const link = document.createElement('a');
@@ -103,11 +111,10 @@ map.on('load', () => {
     layers.appendChild(link);
   });
 
-  // our scrollama object
+  // scrollama object
   scroller
     .setup({
-      step: '.step',
-      // debug: true
+      step: '.step'
     })
     // decide what to do when our step enters the viewport
     .onStepEnter(response => {
@@ -120,8 +127,10 @@ map.on('load', () => {
       if (directionIs('b', 'down') || directionIs('b', 'up')) {
         map.flyTo({
           center: [-73.977402, 40.746748],
-          zoom: 13
-        })
+          zoom: 13,
+          pitch: 45,
+          bearing: 30
+        });
       } else if (directionIs('a', 'up')) {
         mapReset();
       } else if (directionIs('c', 'down') || directionIs('c', 'up')) {
@@ -130,16 +139,17 @@ map.on('load', () => {
           zoom: 13,
           pitch: 0
         });
-        map.setLayoutProperty('income-per-station-cir', 'visibility', 'visible');
-        map.setLayoutProperty('income-per-station-hex', 'visibility', 'none');
+        map.setLayoutProperty(circleLayer, 'visibility', 'visible');
+        map.setLayoutProperty(hexLayer, 'visibility', 'none');
       } else if (directionIs('d', 'down') || directionIs('d', 'up')) {
         map.easeTo({
-          center: [-73.928852, 40.705214],
-          zoom: 11,
-          pitch: 45
+          center: [-73.977402, 40.746748],
+          zoom: 13,
+          pitch: 45,
+          bearing: 30
         })
-        map.setLayoutProperty('income-per-station-cir', 'visibility', 'none');
-        map.setLayoutProperty('income-per-station-hex', 'visibility', 'visible');
+        map.setLayoutProperty(circleLayer, 'visibility', 'none');
+        map.setLayoutProperty(hexLayer, 'visibility', 'visible');
       } else if (directionIs('e', 'down')) {
         mapReset();
         toggleableLayerIds.forEach((toggleableLayerId) => {
@@ -148,7 +158,6 @@ map.on('load', () => {
       }
     });
 });
-
 
 // setup resize event
 window.addEventListener('resize', scroller.resize);
